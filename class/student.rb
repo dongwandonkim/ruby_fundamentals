@@ -1,3 +1,6 @@
+require "bcrypt"
+require_relative 'auth'
+
 class Student
   attr_accessor :first_name, :last_name, :email, :username, :password
 
@@ -12,8 +15,14 @@ class Student
     @last_name = last_name
     @email = email
     @username = username
-    @password = password
+    @password = BCrypt::Password.create(password)
   end
+
+  def check_password password
+    @password == password
+  end
+
+
 
   # def first_name=(first_name)
   #   @first_name = first_name
@@ -44,5 +53,7 @@ p don.last_name
 p don.email
 p don.username
 p don.password
+
+p don.check_password "pass123"
 
 p don
