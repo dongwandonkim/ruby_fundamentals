@@ -22,8 +22,6 @@ class Student
     @password == password
   end
 
-
-
   # def first_name=(first_name)
   #   @first_name = first_name
   # end
